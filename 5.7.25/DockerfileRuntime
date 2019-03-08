@@ -23,10 +23,10 @@ ENV MYSQL_USER=wordpress
 ENV MYSQL_PASSWORD=wordpress
 
 # 6. Run the build-base.sh script to set everything up.
-RUN /bin/sh /build/build-base.sh
+RUN /bin/bash /build/build-base.sh
 
 # 7. Run the build-mysql.sh script to set everything up.
-RUN /bin/sh /build/build-mysql.sh
+RUN /bin/bash /build/build-mysql.sh
 
 # 8. Expose ports.
 EXPOSE 3306 9970

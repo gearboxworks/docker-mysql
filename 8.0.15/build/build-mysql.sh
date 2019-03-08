@@ -3,6 +3,6 @@
 # See gearboxworks/gearbox-base for details.
 test -f /build/include-me.sh && . /build/include-me.sh
 
-echo "Gearbox[$0]: Started."
+c_ok "Started."
 
-echo "Gearbox[$0]: Finished."
+c_ok "Finished."
