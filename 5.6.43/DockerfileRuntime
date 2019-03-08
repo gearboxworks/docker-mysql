@@ -1,0 +1,13 @@
+FROM mysql:5.6.40
+MAINTAINER Gearbox Team <team@gearbox.works>
+
+COPY container.json /etc/container.json
+COPY files /
+
+ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
+ENV MYSQL_DATABASE=wordpress
+ENV MYSQL_USER=wordpress
+ENV MYSQL_PASSWORD=wordpress
+
+EXPOSE 3306
+

@@ -1,0 +1,3 @@
+# Backup MySQL database.
+# 00 07 * * * mysqldump -u wordpress -pwordpress wordpress > /docker-entrypoint-initdb.d/current.sql
+
