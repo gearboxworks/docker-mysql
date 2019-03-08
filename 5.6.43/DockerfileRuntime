@@ -1,13 +1,34 @@
-FROM mysql:5.6.40
+# We are going to reference the gearbox-base container indirectly.
+
+# 1. First reference the gearbox-base image.
+FROM gearboxworks/gearbox-base:debian-stretch as gearbox-base
+
+# 2. Next reference the third party image.
+FROM mysql:5.6.43
+
+# 3. Copy the build directory over from gearbox-base image.
+COPY --from=gearbox-base /build /build
+
+# 4. Now copy the local files specific to this container.
+COPY build /build
+COPY container.json /build/container.json
+
+# 5. Set up env variables.
 MAINTAINER Gearbox Team <team@gearbox.works>
-
-COPY container.json /etc/container.json
-COPY files /
-
+ENV GEARBOX_CONTAINER_NAME "docker-mysql"
+ENV GEARBOX_CONTAINER_VERSION "5.6.43"
 ENV MYSQL_ALLOW_EMPTY_PASSWORD=yes
 ENV MYSQL_DATABASE=wordpress
 ENV MYSQL_USER=wordpress
 ENV MYSQL_PASSWORD=wordpress
 
-EXPOSE 3306
+# 6. Run the build-base.sh script to set everything up.
+RUN /bin/sh /build/build-base.sh
+
+# 7. Run the build-mysql.sh script to set everything up.
+RUN /bin/sh /build/build-mysql.sh
+
+# 8. Expose ports.
+EXPOSE 3306 9970
+WORKDIR /project/www
 

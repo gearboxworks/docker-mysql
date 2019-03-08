@@ -1,5 +1,5 @@
 {
-	"project": "gearbox",
+	"organization": "gearboxworks",
 	"name": "mysql",
 	"version": "5.5.62",
 	"majorversion": "5.5",
@@ -9,7 +9,7 @@
 	"ports": "-p 3306:3306",
 	"volumes": "-v /opt/box/provision:/docker-entrypoint-initdb.d -v mysql-5.5:/var/lib/mysql",
 	"restart": "--restart no",
-	"args": "-e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress",
+	"args": "",
 	"env": "MYSQL_VERSION"
 }
 

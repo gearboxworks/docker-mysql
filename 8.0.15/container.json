@@ -1,5 +1,5 @@
 {
-	"project": "gearbox",
+	"organization": "gearboxworks",
 	"name": "mysql",
 	"version": "8.0.15",
 	"majorversion": "8.0",

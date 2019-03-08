@@ -9,7 +9,7 @@
 	"ports": "-p 3306:3306",
 	"volumes": "-v /opt/box/provision:/docker-entrypoint-initdb.d -v mysql-5.7:/var/lib/mysql",
 	"restart": "--restart no",
-	"args": "",
+	"args": "-e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress",
 	"env": "MYSQL_VERSION"
 }
 
