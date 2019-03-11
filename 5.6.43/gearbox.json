@@ -1,13 +1,14 @@
 {
+	"state": "production",
 	"organization": "gearboxworks",
 	"name": "mysql",
-	"version": "8.0.15",
-	"majorversion": "8.0",
+	"version": "5.6.43",
+	"majorversion": "5.6",
 	"latest": "",
 	"class": "database",
 	"network": "--network gearboxnet",
 	"ports": "-p 3306:3306",
-	"volumes": "-v /opt/box/provision:/docker-entrypoint-initdb.d -v mysql-8.0:/var/lib/mysql",
+	"volumes": "-v /opt/box/provision:/docker-entrypoint-initdb.d -v mysql-5.6:/var/lib/mysql",
 	"restart": "--restart no",
 	"args": "",
 	"env": "MYSQL_VERSION"

@@ -24,5 +24,6 @@ else
 	LOG="$1.log"
 fi
 
-mysqldump -u wordpress -pwordpress wordpress > "/project/backup/sql/${DUMP}" 2> "/project/backup/sql/${LOG}"
+mysqldump -h ${MYSQL_HOST} -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} > "/project/backup/sql/${DUMP}"
+# 2> "/project/backup/sql/${LOG}"
 
