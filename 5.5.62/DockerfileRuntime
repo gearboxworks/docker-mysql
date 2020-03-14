@@ -2,13 +2,13 @@
 
 ################################################################################
 # WARNING: This file has been auto-generated. DO NOT EDIT: WARNING
-# Created on 2020-03-14T17:29:17+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
-# Referenced Docker container for docker-mysql based off gearboxworks/gearbox-base:debian-buster with mysql:5.5.62 overlayed.
+# Created on 2020-03-14T18:31:47+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
+# Referenced Docker container for docker-mysql based off gearboxworks/gearbox-base:debian-stretch with mysql:5.5.62 overlayed.
 
 ARG VERSION=5.5.62
 
 # 1. First reference the gearbox-base image.
-FROM gearboxworks/gearbox-base:debian-buster as gearbox-base
+FROM gearboxworks/gearbox-base:debian-stretch as gearbox-base
 
 # 2. Next reference the third party image.
 FROM mysql:5.5.62
@@ -26,7 +26,7 @@ ENV GEARBOX_CONTAINER_NAME "docker-mysql"
 ENV GEARBOX_CONTAINER_VERSION ${VERSION}
 ENV GEARBOX_ENTRYPOINT ${GEARBOX_ENTRYPOINT}
 ENV GEARBOX_ENTRYPOINT_ARGS ${GEARBOX_ENTRYPOINT_ARGS}
-LABEL gearbox.json='{"state": "production","organization": "gearboxworks","name": "mysql","maintainer": "Gearbox Team <team@gearbox.works>","class": "database","network": "--network gearboxnet","ports": ["3306","33060"],"volumes": "","restart": "--restart no","run": "","args": "mysqld","env": {"MYSQL_ALLOW_EMPTY_PASSWORD":"yes","MYSQL_HOST":"127.0.0.1","MYSQL_DATABASE":"gearbox","MYSQL_USER":"gearbox","MYSQL_PASSWORD":"gearbox"},"refurl": "https://www.mysql.com/","versions": {"8.0.19": {"majorversion": "8.0","latest": true,"ref": "mysql:8.0.19","base": "gearboxworks/gearbox-base:debian-buster"},"5.7.29": {"majorversion": "5.7","latest": false,"ref": "mysql:5.7.29","base": "gearboxworks/gearbox-base:debian-buster"},"5.6.47": {"majorversion": "5.6","latest": false,"ref": "mysql:5.6.47","base": "gearboxworks/gearbox-base:debian-buster"},"5.5.62": {"majorversion": "5.5","latest": false,"ref": "mysql:5.5.62","base": "gearboxworks/gearbox-base:debian-buster"}}}'
+LABEL gearbox.json='{"state": "production","organization": "gearboxworks","name": "mysql","maintainer": "Gearbox Team <team@gearbox.works>","class": "database","network": "--network gearboxnet","ports": ["3306","33060"],"volumes": "","restart": "--restart no","run": "","args": "mysqld","env": {"MYSQL_ALLOW_EMPTY_PASSWORD":"yes","MYSQL_HOST":"127.0.0.1","MYSQL_DATABASE":"gearbox","MYSQL_USER":"gearbox","MYSQL_PASSWORD":"gearbox"},"refurl": "https://www.mysql.com/","versions": {"8.0.19": {"majorversion": "8.0","latest": true,"ref": "mysql:8.0.19","base": "gearboxworks/gearbox-base:debian-buster"},"5.7.29": {"majorversion": "5.7","latest": false,"ref": "mysql:5.7.29","base": "gearboxworks/gearbox-base:debian-buster"},"5.6.47": {"majorversion": "5.6","latest": false,"ref": "mysql:5.6.47","base": "gearboxworks/gearbox-base:debian-buster"},"5.5.62": {"majorversion": "5.5","latest": false,"ref": "mysql:5.5.62","base": "gearboxworks/gearbox-base:debian-stretch"}}}'
 LABEL gearbox.version='5.5.62'
 ENV GEARBOX_VERSION "5.5.62"
 LABEL container.args="mysqld"
@@ -56,8 +56,8 @@ ENV GEARBOX_STATE "production"
 LABEL container.volumes=""
 ENV GEARBOX_VOLUMES ""
 
-LABEL container.base="gearboxworks/gearbox-base:debian-buster"
-ENV GEARBOX_BASE "gearboxworks/gearbox-base:debian-buster"
+LABEL container.base="gearboxworks/gearbox-base:debian-stretch"
+ENV GEARBOX_BASE "gearboxworks/gearbox-base:debian-stretch"
 LABEL container.latest="false"
 ENV GEARBOX_LATEST "false"
 LABEL container.majorversion="5.5"
