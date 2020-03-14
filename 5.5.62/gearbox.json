@@ -2,15 +2,49 @@
 	"state": "production",
 	"organization": "gearboxworks",
 	"name": "mysql",
-	"version": "5.5.62",
-	"majorversion": "5.5",
-	"latest": "",
+	"maintainer": "Gearbox Team <team@gearbox.works>",
 	"class": "database",
 	"network": "--network gearboxnet",
-	"ports": "-p 3306:3306",
-	"volumes": "-v /opt/box/provision:/docker-entrypoint-initdb.d -v mysql-5.5:/var/lib/mysql",
+	"ports": [
+		"3306",
+		"33060"
+	],
+	"volumes": "",
 	"restart": "--restart no",
-	"args": "",
-	"env": "MYSQL_VERSION"
+	"run": "",
+	"args": "mysqld",
+	"env": {
+		"MYSQL_ALLOW_EMPTY_PASSWORD":"yes",
+		"MYSQL_HOST":"127.0.0.1",
+		"MYSQL_DATABASE":"gearbox",
+		"MYSQL_USER":"gearbox",
+		"MYSQL_PASSWORD":"gearbox"
+	},
+	"refurl": "https://www.mysql.com/",
+	"versions": {
+		"8.0.19": {
+			"majorversion": "8.0",
+			"latest": true,
+			"ref": "mysql:8.0.19",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"5.7.29": {
+			"majorversion": "5.7",
+			"latest": false,
+			"ref": "mysql:5.7.29",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"5.6.47": {
+			"majorversion": "5.6",
+			"latest": false,
+			"ref": "mysql:5.6.47",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"5.5.62": {
+			"majorversion": "5.5",
+			"latest": false,
+			"ref": "mysql:5.5.62",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		}
+	}
 }
-

@@ -1,105 +1,100 @@
-![MySQL 8.0.x](https://img.shields.io/badge/MySQL-8.0.x-green.svg)
-![MySQL 5.7.x](https://img.shields.io/badge/MySQL-5.7.x-green.svg)
-![MySQL 5.6.x](https://img.shields.io/badge/MySQL-5.6.x-green.svg)
-![MySQL 5.5.x](https://img.shields.io/badge/MySQL-5.5.x-green.svg)
-
 ![Gearbox](https://github.com/gearboxworks/gearbox.github.io/raw/master/Gearbox-100x.png)
 
 
-# MySQL Docker Container for Gearbox
-This is the repository for the [mysql-docker](https://www.mysql.com/) Docker container implemented for [Gearbox](https://github.com/gearboxworks/gearbox).
-It currently provides versions 5.5.x 5.6.x 5.7.x 8.0.x
+# Another [Gearbox](https://github.com/gearboxworks/) Docker container service - mysql
+This is the repository for the [mysql](https://www.mysql.com/) Docker container implemented for [Gearbox](https://github.com/gearboxworks/).
 
 
-## Supported tags and respective Dockerfiles
+## Repository Info
+GitHub commit: ![commit-date](https://img.shields.io/github/last-commit/gearboxworks/docker-mysql?style=flat-square)
 
-`8.0.11`, `8.0` _([8.0.11/Dockerfile](https://github.com/gearboxworks/mysql-docker/blob/master/8.0.11/Dockerfile))_
+GitHub release(latest): ![last-release-date](https://img.shields.io/github/release-date/gearboxworks/docker-mysql) ![last-release-date](https://img.shields.io/github/v/tag/gearboxworks/docker-mysql?sort=semver) [![release-state](https://github.com/gearboxworks/docker-mysql/workflows/release/badge.svg?event=release)](https://github.com/gearboxworks/docker-mysql/actions?query=workflow%3Arelease)
 
-`5.7.22`, `5.7`, `latest` _([5.7.22/Dockerfile](https://github.com/gearboxworks/mysql-docker/blob/master/5.7.22/Dockerfile))_
 
-`5.6.40`, `5.6` _([5.6.40/Dockerfile](https://github.com/gearboxworks/mysql-docker/blob/master/5.6.40/Dockerfile))_
+## Supported versions and respective Dockerfiles
+| Service | GitHub Version | Docker Version | Docker Size | Docker Tags | Dockerfile |
+| ------- | -------------- | -------------- | ----------- | ----------- | ---------- |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.5.62-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.5.62) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.5.62) | `5.5.62`, `5.5` | _([5.5.62/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.5/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.6.47-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.6.47) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.6.47) | `5.6.47`, `5.6` | _([5.6.47/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.6/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.7.29-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.7.29) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.7.29) | `5.7.29`, `5.7` | _([5.7.29/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.7/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-8.0.19-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/8.0.19) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/8.0.19) | `8.0.19`, `8.0`, `latest` | _([8.0.19/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/8.0/DockerfileRuntime))_ |
 
-`5.5.60`, `5.5` _([5.5.60/Dockerfile](https://github.com/gearboxworks/mysql-docker/blob/master/5.5.60/Dockerfile))_
 
 
 ## Using this container.
-If you want to use this container as part of Gearbox, then use the Docker Hub method.
-Or you can use the GitHub method to build and run the container.
+This container has been designed to work within the [Gearbox](https://github.com/gearboxworks/)
+framework.
+However, due to the flexability of Gearbox, it can be used outside of this framework.
+You can either use it directly from DockerHub or GitHub.
 
 
-## Using it from Docker Hub
-
-### Links
-(Docker Hub repo)[https://hub.docker.com/r/gearbox/mysql/]
-
-(Docker Cloud repo)[https://cloud.docker.com/swarm/gearbox/repository/docker/gearbox/mysql/]
-
-
-### Setup from Docker Hub
-A simple `docker pull gearbox/mysql` will pull down the latest version.
-
-
-### Runtime from Docker Hub
-start - Spin up a Docker container with the correct runtime configs.
-
-`docker run -d --name mysql-8.0.11 --restart unless-stopped --network gearboxnet -p 3306:3306 -v $PROJECT_ROOT/sql:/docker-entrypoint-initdb.d -v mysql_data:/var/lib/mysql gearbox/mysql:8.0.11`
-
-stop - Stop a Docker container.
-
-`docker stop mysql-8.0.11`
-
-run - Run a Docker container in the foreground, (all STDOUT and STDERR will go to console). The Container be removed on termination.
-
-`docker run --rm --name mysql-8.0.11 --network gearboxnet -p 3306:3306 -v $PROJECT_ROOT/sql:/docker-entrypoint-initdb.d -v mysql_data:/var/lib/mysql gearbox/mysql:8.0.11`
-
-shell - Run a shell, (/bin/bash), within a Docker container.
-
-`docker run --rm --name mysql-8.0.11 -i -t --network gearboxnet -p 3306:3306 -v $PROJECT_ROOT/sql:/docker-entrypoint-initdb.d -v mysql_data:/var/lib/mysql gearbox/mysql:8.0.11 /bin/bash`
-
-rm - Remove the Docker container.
-
-`docker container rm mysql-8.0.11`
-
-
-## Using it from GitHub repo
+## Method 1: GitHub repo
 
 ### Setup from GitHub repo
 Simply clone this repository to your local machine
 
 `git clone https://github.com/gearboxworks/mysql-docker.git`
 
-
 ### Building from GitHub repo
 `make build` - Build Docker images. Build all versions from the base directory or specific versions from each directory.
 
-
 `make list` - List already built Docker images. List all versions from the base directory or specific versions from each directory.
-
 
 `make clean` - Remove already built Docker images. Remove all versions from the base directory or specific versions from each directory.
 
-
 `make push` - Push already built Docker images to Docker Hub, (only for Gearbox admins). Push all versions from the base directory or specific versions from each directory.
-
 
 ### Runtime from GitHub repo
 When you `cd` into a version directory you can also perform a few more actions.
 
 `make start` - Spin up a Docker container with the correct runtime configs.
 
-
 `make stop` - Stop a Docker container.
-
 
 `make run` - Run a Docker container in the foreground, (all STDOUT and STDERR will go to console). The Container be removed on termination.
 
-
 `make shell` - Run a shell, (/bin/bash), within a Docker container.
-
 
 `make rm` - Remove the Docker container.
 
-
 `make test` - Will issue a `stop`, `rm`, `clean`, `build`, `create` and `start` on a Docker container.
 
+
+## Method 2: Docker Hub
+
+### Setup from Docker Hub
+A simple `docker pull gearbox/mysql` will pull down the latest version.
+
+### Starting
+start - Spin up a Docker container with the correct runtime configs.
+
+`docker run -d --name mysql-latest --restart unless-stopped --network gearboxnet gearbox/mysql:latest`
+
+### Stopping
+stop - Stop a Docker container.
+
+`docker stop mysql-latest`
+
+### Remove container
+rm - Remove the Docker container.
+
+`docker container rm mysql-latest`
+
+### Run in foreground
+run - Run a Docker container in the foreground, (all STDOUT and STDERR will go to console). The Container be removed on termination.
+
+`docker run --rm --name mysql-latest --network gearboxnet gearbox/mysql:latest`
+
+### Run a shell
+shell - Run a shell, (/bin/bash), within a Docker container.
+
+`docker run --rm --name mysql-latest -i -t --network gearboxnet gearbox/mysql:latest /bin/bash`
+
+### SSH
+ssh - All [Gearbox](https://github.com/gearboxworks/) containers have a running SSH daemon. So you can connect remotely.
+
+```
+SSH_PORT="$(docker port mysql-latest 22/tcp | sed 's/0.0.0.0://')"
+ssh -p ${SSH_PORT} -o StrictHostKeyChecking=no gearbox@localhost
+```
 
