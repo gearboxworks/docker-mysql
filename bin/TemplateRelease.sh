@@ -182,7 +182,7 @@ case "${CMD}" in
 
 		create
 
-		if [ "${GB_GITREPO}" != "docker-template" ]
+		if [ "${GB_GITREPO}" == "docker-template" ]
 		then
 			upload
 		fi
@@ -198,7 +198,7 @@ case "${CMD}" in
 			exit 1
 		fi
 
-		if [ "${GB_GITREPO}" != "docker-template" ]
+		if [ "${GB_GITREPO}" == "docker-template" ]
 		then
 			upload
 		fi
