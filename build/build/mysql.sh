@@ -39,7 +39,17 @@ fi
 
 if [ ! -d /var/lib/mysql-files ]
 then
-	mkdir -p /var/lib/mysql-files && chown mysql:mysql /var/lib/mysql-files
+	mkdir -p /var/lib/mysql-files
 fi
+chown mysql:mysql /var/lib/mysql-files
+
+if [ ! -d /var/lib/mysql ]
+then
+	mkdir -p /var/lib/mysql
+fi
+chown mysql:mysql /var/lib/mysql
+
+addgroup gearbox mysql
+find / -xdev -user mysql | xargs chmod g+w
 
 c_ok "Finished."

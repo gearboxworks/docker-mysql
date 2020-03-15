@@ -4,6 +4,14 @@
 export ARCH GB_BINFILE GB_BINDIR GB_BASEDIR GB_JSONFILE GB_VERSIONS GB_VERSION GITBIN GB_GITURL GB_GITREPO
 
 ARCH="$(uname -s)"
+case ${ARCH} in
+	'Linux')
+		LOG_ARGS='-t 10'
+		;;
+	*)
+		LOG_ARGS='-r -t 10'
+		;;
+esac
 
 GB_BINFILE="$(./bin/JsonToConfig -json-string '{}' -template-string '{{ .ExecName }}')"
 GB_BINDIR="$(./bin/JsonToConfig -json-string '{}' -template-string '{{ .DirPath }}')"
@@ -279,22 +287,13 @@ gb_build() {
 	fi
 	p_ok "${FUNCNAME[0]}" "#### Building image for versions: ${GB_VERSIONS}"
 
-	case ${ARCH} in
-		'Linux')
-			LOG_ARGS='-t 10'
-			;;
-		*)
-			LOG_ARGS='-r -t 10'
-			;;
-	esac
 
 	for GB_VERSION in ${GB_VERSIONS}
 	do
 		gb_getenv ${GB_VERSION}
 
-		LOGDIR="${GB_VERSION}/logs"
-		# LOGFILE="${LOGDIR}/$(date +'%Y%m%d-%H%M%S').log"
-		LOGFILE="${LOGDIR}/${GB_NAME}.log"
+		# LOGFILE="${GB_VERSION}/logs/$(date +'%Y%m%d-%H%M%S').log"
+		LOGFILE="${GB_VERSION}/logs/build.log"
 
 		if [ "${GB_REF}" == "base" ]
 		then
@@ -806,7 +805,15 @@ gb_test() {
 					p_info "${GB_CONTAINERVERSION}" "Running unit-tests."
 					PORT="$(docker port ${GB_CONTAINERVERSION} 22/tcp | sed 's/0.0.0.0://')"
 
-					if ssh -p ${PORT} -o StrictHostKeyChecking=no gearbox@localhost /etc/gearbox/unit-tests/run.sh
+					# LOGFILE="${GB_VERSION}/logs/$(date +'%Y%m%d-%H%M%S').log"
+					LOGFILE="${GB_VERSION}/logs/test.log"
+
+					#if [ "${GITHUB_ACTIONS}" == "" ]
+					#then
+					#	script ${LOG_ARGS} ${LOGFILE}
+					#fi
+
+					if ssh -p ${PORT} -o StrictHostKeyChecking=no gearbox@localhost /etc/gearbox/unit-tests/run.sh 2>&1 | tee ${LOGFILE}
 					then
 						FAILED=""
 						break

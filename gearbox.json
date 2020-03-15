@@ -12,7 +12,7 @@
 	"volumes": "",
 	"restart": "--restart no",
 	"run": "",
-	"args": "mysqld",
+	"args": "mysqld --user=gearbox",
 	"env": {
 		"MYSQL_ALLOW_EMPTY_PASSWORD":"yes",
 		"MYSQL_HOST":"127.0.0.1",
