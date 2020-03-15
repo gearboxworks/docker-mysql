@@ -46,6 +46,7 @@ create() {
 }
 
 update() {
+set -x
 	echo "# Gearbox[${GB_GITREPO}]: Updating release v${VERSION} on GitHub."
 	${DIR}/github-release edit \
 		--user "gearboxworks" \
@@ -53,6 +54,7 @@ update() {
 		--tag "${VERSION}" \
 		--name "Release ${VERSION}" \
 		--description "${DESCRIPTION}"
+set +x
 }
 
 upload() {
