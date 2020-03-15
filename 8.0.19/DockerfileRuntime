@@ -2,7 +2,7 @@
 
 ################################################################################
 # WARNING: This file has been auto-generated. DO NOT EDIT: WARNING
-# Created on 2020-03-14T17:29:17+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
+# Created on 2020-03-15T16:46:19+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
 # Referenced Docker container for docker-mysql based off gearboxworks/gearbox-base:debian-buster with mysql:8.0.19 overlayed.
 
 ARG VERSION=8.0.19
@@ -26,7 +26,7 @@ ENV GEARBOX_CONTAINER_NAME "docker-mysql"
 ENV GEARBOX_CONTAINER_VERSION ${VERSION}
 ENV GEARBOX_ENTRYPOINT ${GEARBOX_ENTRYPOINT}
 ENV GEARBOX_ENTRYPOINT_ARGS ${GEARBOX_ENTRYPOINT_ARGS}
-LABEL gearbox.json='{"state": "production","organization": "gearboxworks","name": "mysql","maintainer": "Gearbox Team <team@gearbox.works>","class": "database","network": "--network gearboxnet","ports": ["3306","33060"],"volumes": "","restart": "--restart no","run": "","args": "mysqld","env": {"MYSQL_ALLOW_EMPTY_PASSWORD":"yes","MYSQL_HOST":"127.0.0.1","MYSQL_DATABASE":"gearbox","MYSQL_USER":"gearbox","MYSQL_PASSWORD":"gearbox"},"refurl": "https://www.mysql.com/","versions": {"8.0.19": {"majorversion": "8.0","latest": true,"ref": "mysql:8.0.19","base": "gearboxworks/gearbox-base:debian-buster"},"5.7.29": {"majorversion": "5.7","latest": false,"ref": "mysql:5.7.29","base": "gearboxworks/gearbox-base:debian-buster"},"5.6.47": {"majorversion": "5.6","latest": false,"ref": "mysql:5.6.47","base": "gearboxworks/gearbox-base:debian-buster"},"5.5.62": {"majorversion": "5.5","latest": false,"ref": "mysql:5.5.62","base": "gearboxworks/gearbox-base:debian-buster"}}}'
+LABEL gearbox.json='{"state": "production","organization": "gearboxworks","name": "mysql","maintainer": "Gearbox Team <team@gearbox.works>","class": "database","network": "--network gearboxnet","ports": ["3306","33060"],"volumes": "","restart": "--restart no","run": "","args": "mysqld","env": {"MYSQL_ALLOW_EMPTY_PASSWORD":"yes","MYSQL_HOST":"127.0.0.1","MYSQL_DATABASE":"gearbox","MYSQL_USER":"gearbox","MYSQL_PASSWORD":"gearbox"},"refurl": "https://www.mysql.com/","versions": {"8.0.19": {"majorversion": "8.0","latest": true,"ref": "mysql:8.0.19","base": "gearboxworks/gearbox-base:debian-buster"},"5.7.29": {"majorversion": "5.7","latest": false,"ref": "mysql:5.7.29","base": "gearboxworks/gearbox-base:debian-buster"},"5.6.47": {"majorversion": "5.6","latest": false,"ref": "mysql:5.6.47","base": "gearboxworks/gearbox-base:debian-stretch"},"5.5.62": {"majorversion": "5.5","latest": false,"ref": "mysql:5.5.62","base": "gearboxworks/gearbox-base:debian-stretch"}}}'
 LABEL gearbox.version='8.0.19'
 ENV GEARBOX_VERSION "8.0.19"
 LABEL container.args="mysqld"

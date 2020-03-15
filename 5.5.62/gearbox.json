@@ -38,7 +38,7 @@
 			"majorversion": "5.6",
 			"latest": false,
 			"ref": "mysql:5.6.47",
-			"base": "gearboxworks/gearbox-base:debian-buster"
+			"base": "gearboxworks/gearbox-base:debian-stretch"
 		},
 		"5.5.62": {
 			"majorversion": "5.5",

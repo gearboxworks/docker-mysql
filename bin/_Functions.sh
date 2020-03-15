@@ -18,8 +18,15 @@ GB_BINDIR="$(./bin/JsonToConfig -json-string '{}' -template-string '{{ .DirPath 
 GB_BASEDIR="$(dirname "$GB_BINDIR")"
 GB_JSONFILE="${GB_BASEDIR}/gearbox.json"
 
-GB_VERSIONS="$(${GB_BINFILE} -json ${GB_JSONFILE} -template-string '{{ range $version, $value := .Json.versions }}{{ $version }} {{ end }}')"
-GB_VERSIONS="$(echo ${GB_VERSIONS})"	# Easily remove CR
+if [ -f "${GB_JSONFILE}" ]
+then
+	GB_VERSIONS="$(${GB_BINFILE} -json ${GB_JSONFILE} -template-string '{{ range $version, $value := .Json.versions }}{{ $version }} {{ end }}')"
+	GB_VERSIONS="$(echo ${GB_VERSIONS})"	# Easily remove CR
+
+	GB_IMAGENAME="$(${GB_BINFILE} -json ${GB_JSONFILE} -template-string '{{ .Json.organization }}/{{ .Json.name }}')"
+
+	GB_NAME="$(${GB_BINFILE} -json ${GB_JSONFILE} -template-string '{{ .Json.name }}')"
+fi
 
 GITBIN="$(which git)"
 GB_GITURL="$(${GITBIN} config --get remote.origin.url)"
@@ -227,6 +234,10 @@ gb_clean() {
 		gb_getenv ${GB_VERSION}
 
 
+		p_info "${GB_IMAGEVERSION}" "Removing logs."
+		rm -f ${GB_VERSION}/logs/*.log
+
+
 		gb_checkContainer ${GB_CONTAINERVERSION}
 		case ${STATE} in
 			'STARTED')
@@ -269,10 +280,6 @@ gb_clean() {
 				p_warn "${GB_IMAGEVERSION}" "Image already removed."
 				;;
 		esac
-
-
-		p_info "${GB_IMAGEVERSION}" "Removing logs."
-		rm -f "${GB_VERSION}/logs/*.log"
 	done
 
 	return 0
@@ -425,22 +432,13 @@ gb_list() {
 	then
 		return 1
 	fi
-	p_ok "${FUNCNAME[0]}" "#### Listing image and container for versions: ${GB_VERSIONS}"
 
-	for GB_VERSION in ${GB_VERSIONS}
-	do
-		gb_getenv ${GB_VERSION}
+	p_ok "${FUNCNAME[0]}" "#### Listing images for ${GB_IMAGENAME}"
+	docker image ls "${GB_IMAGENAME}:*"
 
-		p_info "${GB_IMAGEMAJORVERSION}" "List image."
-		docker image ls ${GB_IMAGEMAJORVERSION}
-		p_info "${GB_IMAGEVERSION}" "List image."
-		docker image ls ${GB_IMAGEVERSION}
+	p_ok "${FUNCNAME[0]}" "#### Listing containers for ${GB_NAME}"
+	docker container ls -a -s -f name="^${GB_NAME}-"
 
-		echo "# Gearbox[${GB_CONTAINERMAJORVERSION}]: List container."
-		docker container ls -a -f name="^${GB_CONTAINERMAJORVERSION}"
-		p_info "${GB_CONTAINERVERSION}" "List container."
-		docker container ls -a -f name="^${GB_CONTAINERVERSION}"
-	done
 	return 0
 }
 
