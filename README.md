@@ -1,7 +1,7 @@
-![Gearbox](https://github.com/gearboxworks/gearbox.github.io/raw/master/Gearbox-100x.png)
+![Gearbox](https://raw.githubusercontent.com/gearboxworks/gearboxworks.github.io/master/assets/images/gearbox-logo.png)
 
 
-# Another [Gearbox](https://github.com/gearboxworks/) Docker container service - mysql
+# mysql Docker container service for [Gearbox](https://github.com/gearboxworks/)
 This is the repository for the [mysql](https://www.mysql.com/) Docker container implemented for [Gearbox](https://github.com/gearboxworks/).
 
 
@@ -12,13 +12,12 @@ GitHub release(latest): ![last-release-date](https://img.shields.io/github/relea
 
 
 ## Supported versions and respective Dockerfiles
-| Service | GitHub Version | Docker Version | Docker Size | Docker Tags | Dockerfile |
-| ------- | -------------- | -------------- | ----------- | ----------- | ---------- |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.5.62-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.5.62) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.5.62) | `5.5.62`, `5.5` | _([5.5.62/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.5/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.6.47-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.6.47) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.6.47) | `5.6.47`, `5.6` | _([5.6.47/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.6/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.7.29-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.7.29) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.7.29) | `5.7.29`, `5.7` | _([5.7.29/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/5.7/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-8.0.19-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/8.0.19) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/8.0.19) | `8.0.19`, `8.0`, `latest` | _([8.0.19/DockerfileRuntime](https://github.com/gearboxworks/docker-mysql/blob/master/8.0/DockerfileRuntime))_ |
-
+| Service | GitHub Version | Docker Version | Docker Size | Docker Tags |
+| ------- | -------------- | -------------- | ----------- | ----------- |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.5.62-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.5.62) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.5.62) | _([`5.5.62`, `5.5`](https://github.com/gearboxworks/docker-mysql/blob/master/5.5/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.6.47-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.6.47) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.6.47) | _([`5.6.47`, `5.6`](https://github.com/gearboxworks/docker-mysql/blob/master/5.6/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.7.29-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.7.29) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.7.29) | _([`5.7.29`, `5.7`](https://github.com/gearboxworks/docker-mysql/blob/master/5.7/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-8.0.19-green.svg) | ![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/8.0.19) | ![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/8.0.19) | _([`8.0.19`, `8.0`, `latest`](https://github.com/gearboxworks/docker-mysql/blob/master/8.0/DockerfileRuntime))_ |
 
 
 ## Using this container.
@@ -45,7 +44,7 @@ Simply clone this repository to your local machine
 `make push` - Push already built Docker images to Docker Hub, (only for Gearbox admins). Push all versions from the base directory or specific versions from each directory.
 
 ### Runtime from GitHub repo
-When you `cd` into a version directory you can also perform a few more actions.
+You can either build your container as above, or use it from DockerHub with these commands:
 
 `make start` - Spin up a Docker container with the correct runtime configs.
 

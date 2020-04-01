@@ -1,38 +1,46 @@
 {
-	"state": "production",
-	"organization": "gearboxworks",
-	"name": "mysql",
-	"maintainer": "Gearbox Team <team@gearbox.works>",
-	"class": "database",
-	"network": "--network gearboxnet",
-	"ports": [
-		"3306",
-		"33060"
-	],
-	"volumes": "",
-	"restart": "--restart no",
-	"run": "",
-	"args": "mysqld",
-	"env": {
-		"MYSQL_ALLOW_EMPTY_PASSWORD":"yes",
-		"MYSQL_HOST":"127.0.0.1",
-		"MYSQL_DATABASE":"gearbox",
-		"MYSQL_USER":"gearbox",
-		"MYSQL_PASSWORD":"gearbox"
+	"schema": "gear-1",
+	"meta": {
+		"state": "production",
+		"organization": "gearboxworks",
+		"name": "mysql",
+		"label": "Mysql",
+		"maintainer": "Gearbox Team <team@gearbox.works>",
+		"class": "database",
+		"refurl": "https://www.mysql.com/"
 	},
-	"refurl": "https://www.mysql.com/",
-	"versions": {
-		"8.0.19": {
-			"majorversion": "8.0",
-			"latest": true,
-			"ref": "mysql:8.0.19",
-			"base": "gearboxworks/gearbox-base:debian-buster"
+	"build": {
+		"ports": {
+
+			"mysql": "3306",
+			"unknown": "33060"
 		},
-		"5.7.29": {
-			"majorversion": "5.7",
+		"run": "",
+		"args": "mysqld",
+		"env": {
+
+			"MYSQL_ALLOW_EMPTY_PASSWORD": "yes",
+			"MYSQL_DATABASE": "gearbox",
+			"MYSQL_HOST": "127.0.0.1",
+			"MYSQL_PASSWORD": "gearbox",
+			"MYSQL_USER": "gearbox"
+		},
+		"network": "--network gearboxnet",
+		"volumes": "",
+		"restart": "--restart no"
+	},
+	"run": {
+	},
+	"project": {
+	},
+	"extensions": {
+	},
+	"versions": {
+		"5.5.62": {
+			"majorversion": "5.5",
 			"latest": false,
-			"ref": "mysql:5.7.29",
-			"base": "gearboxworks/gearbox-base:debian-buster"
+			"ref": "mysql:5.5.62",
+			"base": "gearboxworks/gearbox-base:debian-stretch"
 		},
 		"5.6.47": {
 			"majorversion": "5.6",
@@ -40,11 +48,18 @@
 			"ref": "mysql:5.6.47",
 			"base": "gearboxworks/gearbox-base:debian-stretch"
 		},
-		"5.5.62": {
-			"majorversion": "5.5",
+		"5.7.29": {
+			"majorversion": "5.7",
 			"latest": false,
-			"ref": "mysql:5.5.62",
-			"base": "gearboxworks/gearbox-base:debian-stretch"
-		}
+			"ref": "mysql:5.7.29",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"8.0.19": {
+			"majorversion": "8.0",
+			"latest": true,
+			"ref": "mysql:8.0.19",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"": {}
 	}
 }
