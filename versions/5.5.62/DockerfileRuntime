@@ -1,7 +1,7 @@
 
 ################################################################################
 # WARNING: This file has been auto-generated. DO NOT EDIT: WARNING
-# Created on 2020-04-01T12:02:25+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
+# Created on 2020-04-03T14:26:58+1100, using template:DockerfileRuntime.tmpl and json:gearbox.json
 # Referenced Docker container for docker-mysql based off gearboxworks/gearbox-base:debian-stretch with mysql:5.5.62 overlayed.
 
 ARG VERSION=5.5.62
