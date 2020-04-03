@@ -1,4 +1,4 @@
-![Gearbox](https://raw.githubusercontent.com/gearboxworks/gearboxworks.github.io/master/assets/images/gearbox-logo.png)
+![Gearbox](https://gearboxworks.github.io/assets/images/gearbox-logo.png)
 
 
 # mysql Docker container service for [Gearbox](https://github.com/gearboxworks/)
@@ -68,9 +68,9 @@ Create, and start the mysql Gearbox container. Run a shell.
 
 `./bin/gb-launch -gb-name mysql -gb-shell`
 
-Create, and start the mysql Gearbox container with version 8.0.19 and run a shell.
+Create, and start the mysql Gearbox container with version 5.7.29 and run a shell.
 
-`./bin/gb-launch -gb-name mysql -gb-version 8.0.19 -gb-shell`
+`./bin/gb-launch -gb-name mysql -gb-version 5.7.29 -gb-shell`
 
 If mysql is symlinked to `gb-launch`, then you can drop the `-gb-name` flag.
 
@@ -80,18 +80,18 @@ Running mysql Gearbox container default command. If a container has a default in
 
 `./bin/mysql -flag1 -flag2 variable`
 
-`./bin/gb-launch -gb-name mysql -gb-version 8.0.19 -flag1 -flag2 variable`
+`./bin/gb-launch -gb-name mysql -gb-version 5.7.29 -flag1 -flag2 variable`
 
 
 Running alternate commands within the mysql Gearbox container.
 
 `./bin/mysql -gb-shell -- ls -l`
 
-`./bin/gb-launch -gb-name mysql -gb-version 8.0.19 -gb-shell -- ls -l`
+`./bin/gb-launch -gb-name mysql -gb-version 5.7.29 -gb-shell -- ls -l`
 
 `./bin/mysql -gb-shell -- ps -eaf`
 
-`./bin/gb-launch -gb-name mysql -gb-version 8.0.19 -gb-shell -- ps -eaf`
+`./bin/gb-launch -gb-name mysql -gb-version 5.7.29 -gb-shell -- ps -eaf`
 
 
 ssh - All [Gearbox](https://github.com/gearboxworks/) containers have a running SSH daemon. So you can connect remotely.
