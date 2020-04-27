@@ -4,7 +4,7 @@
 		"state": "production",
 		"organization": "gearboxworks",
 		"name": "mysql",
-		"label": "Mysql",
+		"label": "MySQL",
 		"maintainer": "Gearbox Team <team@gearbox.works>",
 		"class": "database",
 		"refurl": "https://www.mysql.com/"
