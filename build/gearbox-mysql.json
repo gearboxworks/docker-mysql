@@ -4,7 +4,7 @@
 		"state": "production",
 		"organization": "gearboxworks",
 		"name": "mysql",
-		"label": "Mysql",
+		"label": "MySQL",
 		"maintainer": "Gearbox Team <team@gearbox.works>",
 		"class": "database",
 		"refurl": "https://www.mysql.com/"
@@ -30,6 +30,26 @@
 		"restart": "--restart no"
 	},
 	"run": {
+		"commands": {
+			"default": "/usr/bin/mysql",
+			"mysql": "/usr/bin/mysql",
+			"mysql_config_editor": "/usr/bin/mysql_config_editor",
+			"mysql_secure_installation": "/usr/bin/mysql_secure_installation",
+			"mysql_ssl_rsa_setup": "/usr/bin/mysql_ssl_rsa_setup",
+			"mysql_tzinfo_to_sql": "/usr/bin/mysql_tzinfo_to_sql",
+			"mysql_upgrade": "/usr/bin/mysql_upgrade",
+			"mysqladmin": "/usr/bin/mysqladmin",
+			"mysqlbinlog": "/usr/bin/mysqlbinlog",
+			"mysqlcheck": "/usr/bin/mysqlcheck",
+			"mysqld_multi": "/usr/bin/mysqld_multi",
+			"mysqld_safe": "/usr/bin/mysqld_safe",
+			"mysqldump": "/usr/bin/mysqldump",
+			"mysqldumpslow": "/usr/bin/mysqldumpslow",
+			"mysqlimport": "/usr/bin/mysqlimport",
+			"mysqlpump": "/usr/bin/mysqlpump",
+			"mysqlshow": "/usr/bin/mysqlshow",
+			"mysqlslap": "/usr/bin/mysqlslap"
+		}
 	},
 	"project": {
 	},
@@ -42,24 +62,23 @@
 			"ref": "mysql:5.5.62",
 			"base": "gearboxworks/gearbox-base:debian-stretch"
 		},
-		"5.6.47": {
+		"5.6.48": {
 			"majorversion": "5.6",
 			"latest": false,
-			"ref": "mysql:5.6.47",
+			"ref": "mysql:5.6.48",
 			"base": "gearboxworks/gearbox-base:debian-stretch"
 		},
-		"5.7.29": {
+		"5.7.30": {
 			"majorversion": "5.7",
 			"latest": false,
-			"ref": "mysql:5.7.29",
+			"ref": "mysql:5.7.30",
 			"base": "gearboxworks/gearbox-base:debian-buster"
 		},
-		"8.0.19": {
+		"8.0.20": {
 			"majorversion": "8.0",
 			"latest": true,
-			"ref": "mysql:8.0.19",
+			"ref": "mysql:8.0.20",
 			"base": "gearboxworks/gearbox-base:debian-buster"
-		},
-		"": {}
+		}
 	}
 }

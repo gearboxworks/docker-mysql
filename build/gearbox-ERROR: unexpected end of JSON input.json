@@ -1,0 +1,67 @@
+{
+	"schema": "gear-1",
+	"meta": {
+		"state": "production",
+		"organization": "gearboxworks",
+		"name": "mysql",
+		"label": "MySQL",
+		"maintainer": "Gearbox Team <team@gearbox.works>",
+		"class": "database",
+		"refurl": "https://www.mysql.com/"
+	},
+	"build": {
+		"ports": {
+
+			"mysql": "3306",
+			"unknown": "33060"
+		},
+		"run": "",
+		"args": "mysqld",
+		"env": {
+
+			"MYSQL_ALLOW_EMPTY_PASSWORD": "yes",
+			"MYSQL_DATABASE": "gearbox",
+			"MYSQL_HOST": "127.0.0.1",
+			"MYSQL_PASSWORD": "gearbox",
+			"MYSQL_USER": "gearbox"
+		},
+		"network": "--network gearboxnet",
+		"volumes": "",
+		"restart": "--restart no"
+	},
+	"run": {
+		"commands": {
+			"default": "/usr/bin/mongo",
+			"mongo": "/usr/bin/mongo"
+	},
+	"project": {
+	},
+	"extensions": {
+	},
+	"versions": {
+		"5.5.62": {
+			"majorversion": "5.5",
+			"latest": false,
+			"ref": "mysql:5.5.62",
+			"base": "gearboxworks/gearbox-base:debian-stretch"
+		},
+		"5.6.48": {
+			"majorversion": "5.6",
+			"latest": false,
+			"ref": "mysql:5.6.48",
+			"base": "gearboxworks/gearbox-base:debian-stretch"
+		},
+		"5.7.30": {
+			"majorversion": "5.7",
+			"latest": false,
+			"ref": "mysql:5.7.30",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		},
+		"8.0.20": {
+			"majorversion": "8.0",
+			"latest": true,
+			"ref": "mysql:8.0.20",
+			"base": "gearboxworks/gearbox-base:debian-buster"
+		}
+	}
+}

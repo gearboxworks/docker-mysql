@@ -1,0 +1,89 @@
+
+################################################################################
+# WARNING: This file has been auto-generated. DO NOT EDIT: WARNING
+# Created on 2020-05-06T21:41:12+1000, using template:DockerfileRuntime.tmpl and json:gearbox.json
+# Referenced Docker container for docker-mysql based off gearboxworks/gearbox-base:debian-stretch with mysql:5.6.48 overlayed.
+
+ARG VERSION=5.6.48
+
+# 1. First reference the gearbox-base image.
+FROM gearboxworks/gearbox-base:debian-stretch as gearbox-base
+
+# 2. Next reference the third party image.
+FROM mysql:5.6.48
+ARG VERSION
+ARG GEARBOX_ENTRYPOINT
+ARG GEARBOX_ENTRYPOINT_ARGS
+USER root
+
+# 3. Copy the build directory over from gearbox-base image.
+COPY --from=gearbox-base /etc/gearbox /etc/gearbox
+
+# 4. Set up env variables.
+MAINTAINER Gearbox Team <team@gearbox.works>
+ENV GEARBOX_CONTAINER_NAME "docker-mysql"
+ENV GEARBOX_CONTAINER_VERSION ${VERSION}
+ENV GEARBOX_ENTRYPOINT ${GEARBOX_ENTRYPOINT}
+ENV GEARBOX_ENTRYPOINT_ARGS ${GEARBOX_ENTRYPOINT_ARGS}
+LABEL gearbox.json='{"schema": "gear-1","meta": {"state": "production","organization": "gearboxworks","name": "mysql","label": "MySQL","maintainer": "Gearbox Team <team@gearbox.works>","class": "database","refurl": "https://www.mysql.com/"},"build": {"ports": {"mysql": "3306","unknown": "33060"},"run": "","args": "mysqld","env": {"MYSQL_ALLOW_EMPTY_PASSWORD": "yes","MYSQL_DATABASE": "gearbox","MYSQL_HOST": "127.0.0.1","MYSQL_PASSWORD": "gearbox","MYSQL_USER": "gearbox"},"network": "--network gearboxnet","volumes": "","restart": "--restart no"},"run": {"commands": {"default": "/usr/bin/mysql","mysql": "/usr/bin/mysql","mysql_config_editor": "/usr/bin/mysql_config_editor","mysql_secure_installation": "/usr/bin/mysql_secure_installation","mysql_ssl_rsa_setup": "/usr/bin/mysql_ssl_rsa_setup","mysql_tzinfo_to_sql": "/usr/bin/mysql_tzinfo_to_sql","mysql_upgrade": "/usr/bin/mysql_upgrade","mysqladmin": "/usr/bin/mysqladmin","mysqlbinlog": "/usr/bin/mysqlbinlog","mysqlcheck": "/usr/bin/mysqlcheck","mysqld_multi": "/usr/bin/mysqld_multi","mysqld_safe": "/usr/bin/mysqld_safe","mysqldump": "/usr/bin/mysqldump","mysqldumpslow": "/usr/bin/mysqldumpslow","mysqlimport": "/usr/bin/mysqlimport","mysqlpump": "/usr/bin/mysqlpump","mysqlshow": "/usr/bin/mysqlshow","mysqlslap": "/usr/bin/mysqlslap"}},"project": {},"extensions": {},"versions": {"5.5.62": {"majorversion": "5.5","latest": false,"ref": "mysql:5.5.62","base": "gearboxworks/gearbox-base:debian-stretch"},"5.6.48": {"majorversion": "5.6","latest": false,"ref": "mysql:5.6.48","base": "gearboxworks/gearbox-base:debian-stretch"},"5.7.30": {"majorversion": "5.7","latest": false,"ref": "mysql:5.7.30","base": "gearboxworks/gearbox-base:debian-buster"},"8.0.20": {"majorversion": "8.0","latest": true,"ref": "mysql:8.0.20","base": "gearboxworks/gearbox-base:debian-buster"}}}'
+LABEL gearbox.version='5.6.48'
+ENV GEARBOX_VERSION "5.6.48"
+LABEL container.class="database"
+ENV GEARBOX_CLASS "database"
+LABEL container.label="MySQL"
+ENV GEARBOX_LABEL "MySQL"
+LABEL container.maintainer="Gearbox Team <team@gearbox.works>"
+ENV GEARBOX_MAINTAINER "Gearbox Team <team@gearbox.works>"
+LABEL container.name="mysql"
+ENV GEARBOX_NAME "mysql"
+LABEL container.organization="gearboxworks"
+ENV GEARBOX_ORGANIZATION "gearboxworks"
+LABEL container.refurl="https://www.mysql.com/"
+ENV GEARBOX_REFURL "https://www.mysql.com/"
+LABEL container.state="production"
+ENV GEARBOX_STATE "production"
+LABEL container.args="mysqld"
+ENV GEARBOX_ARGS "mysqld"
+# SKIP env
+LABEL container.network="--network gearboxnet"
+ENV GEARBOX_NETWORK "--network gearboxnet"
+LABEL container.ports="map[mysql:3306 unknown:33060]"
+ENV GEARBOX_PORTS "map[mysql:3306 unknown:33060]"
+LABEL container.restart="--restart no"
+ENV GEARBOX_RESTART "--restart no"
+LABEL container.run=""
+ENV GEARBOX_RUN ""
+LABEL container.volumes=""
+ENV GEARBOX_VOLUMES ""
+LABEL container.base="gearboxworks/gearbox-base:debian-stretch"
+ENV GEARBOX_BASE "gearboxworks/gearbox-base:debian-stretch"
+LABEL container.latest="false"
+ENV GEARBOX_LATEST "false"
+LABEL container.majorversion="5.6"
+ENV GEARBOX_MAJORVERSION "5.6"
+LABEL container.ref="mysql:5.6.48"
+ENV GEARBOX_REF "mysql:5.6.48"
+ENV MYSQL_ALLOW_EMPTY_PASSWORD "yes"
+ENV MYSQL_DATABASE "gearbox"
+ENV MYSQL_HOST "127.0.0.1"
+ENV MYSQL_PASSWORD "gearbox"
+ENV MYSQL_USER "gearbox"
+
+# 5. Now copy the local files specific to this container.
+COPY build /etc/gearbox
+COPY versions/${VERSION}/build /etc/gearbox
+
+# 6. Run the base.sh script to set everything up.
+RUN /bin/sh /etc/gearbox/build/base.sh
+
+# 7. Run the mysql.sh script to set everything up.
+RUN /bin/sh /etc/gearbox/build/mysql.sh
+
+# 8. Expose ports.
+EXPOSE 22 9970 3306 33060 
+WORKDIR /home/gearbox/projects
+
+CMD ["/init"]
+
+# END
+################################################################################

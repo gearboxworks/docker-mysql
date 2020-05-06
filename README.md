@@ -15,9 +15,9 @@ GitHub release(latest): ![last-release-date](https://img.shields.io/github/relea
 | Service | GitHub Version | Docker Version | Docker Size | Docker Tags |
 | ------- | -------------- | -------------- | ----------- | ----------- |
 | [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.5.62-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.5.62)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.5.62)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`5.5.62`, `5.5`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/5.5.62/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.6.47-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.6.47)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.6.47)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`5.6.47`, `5.6`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/5.6.47/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.7.29-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.7.29)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.7.29)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`5.7.29`, `5.7`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/5.7.29/DockerfileRuntime))_ |
-| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-8.0.19-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/8.0.19)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/8.0.19)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`8.0.19`, `8.0`, `latest`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/8.0.19/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.6.48-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.6.48)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.6.48)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`5.6.48`, `5.6`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/5.6.48/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-5.7.30-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/5.7.30)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/5.7.30)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`5.7.30`, `5.7`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/5.7.30/DockerfileRuntime))_ |
+| [mysql](https://www.mysql.com/) | ![mysql](https://img.shields.io/badge/mysql-8.0.20-green.svg) | [![Docker Version)](https://img.shields.io/docker/v/gearboxworks/mysql/8.0.20)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | [![Docker Size](https://img.shields.io/docker/image-size/gearboxworks/mysql/8.0.20)](https://hub.docker.com/repository/docker/gearboxworks/mysql) | _([`8.0.20`, `8.0`, `latest`](https://github.com/gearboxworks/docker-mysql/blob/master/versions/8.0.20/DockerfileRuntime))_ |
 
 
 ## About this container.
@@ -34,8 +34,8 @@ However, due to the flexability of Gearbox, it can be used outside of this frame
 
 There are three methods:
 
-## Method 1: Using gb-launch
-`gb-launch` is a tool specifically designed to interact with a Gearbox Docker container.
+## Method 1: Using launch
+`launch` is a tool specifically designed to interact with a Gearbox Docker container.
 
 It provides three important functional areas, without any Docker container learning curve:
 - Allows control over Gearbox Docker containers: stop, start, create, remove.
@@ -44,60 +44,80 @@ It provides three important functional areas, without any Docker container learn
 
 It also provides a functional SSH daemon for connecting remotely as well as a standard set of common tools and utilities.
 
+Further `launch` documentation can be [found here](https://github.com/gearboxworks/docker-template/blob/master/LAUNCH.md).
 
-### Setup from GitHub repo
-`gb-launch` is currently in beta testing and is included along with all Gearbox Docker repos.
+### Download launch
+`launch` is currently in beta testing and is included along with all Gearbox Docker repos.
 Once out of beta, it will be included within the Gearbox installation package.
 
-For now, simply clone this repository to your local machine.
+For now, simply download the standalone `launch` binary for your O/S.
+- [Mac OSX 64bit](https://github.com/gearboxworks/docker-template/raw/master/bin/Darwin/launch)
+- [Linux 64bit](https://github.com/gearboxworks/docker-template/raw/master/bin/Linux/launch)
+- [Windows 64bit](https://github.com/gearboxworks/docker-template/raw/master/bin/Windows/launch)
 
-`git clone https://github.com/gearboxworks/docker-mysql.git`
 
-### Running gb-launch
-There are many ways to call gb-launch, either directly or indirectly.
+### Running launch
+There are many ways to call launch, either directly or indirectly.
 Additionally, all host environment variables will be imported into the container seamlessly.
 This allows a devloper to try multiple versions of software as though they were installed locally.
 
 If a container is missing, it will be downloaded and created. Multiple versions can co-exist.
 
-Create, and start the mysql Gearbox container.
+Install, create, and start the mysql Gearbox container.
 
-`./bin/gb-launch -gb-name mysql`
+`./launch install mysql`
 
 Create, and start the mysql Gearbox container. Run a shell.
 
-`./bin/gb-launch -gb-name mysql -gb-shell`
+`./launch shell mysql`
 
-Create, and start the mysql Gearbox container with version 5.5.62 and run a shell.
+Create, and start the mysql Gearbox container with version 8.0.20 and run a shell.
 
-`./bin/gb-launch -gb-name mysql -gb-version 5.5.62 -gb-shell`
+`./launch shell mysql:8.0.20`
 
-If mysql is symlinked to `gb-launch`, then you can drop the `-gb-name` flag.
+`./launch shell mysql:8.0.20 ls -l`
 
-`./bin/mysql`
+`./launch shell mysql:8.0.20 ps -eaf`
+
+
+### Available commands
+If mysql is symlinked to `launch`, then the Gearbox container will be determined automatically and the default command will be run.
+All available commands for a Gearbox container will be automatically symlinked upon installation.
+
+`./mysql`
 
 Running mysql Gearbox container default command. If a container has a default interactive command, arguments can be supplied without specifying that command.
 
-`./bin/mysql -flag1 -flag2 variable`
+`./mysql -flag1 -flag2 variable`
 
-`./bin/gb-launch -gb-name mysql -gb-version 5.5.62 -flag1 -flag2 variable`
+`./launch mysql:8.0.20 -flag1 -flag2 variable`
+
+Gearbox containers may have multiple executables that can be run. The mysql Gearbox container has the following available commands:
+- The default command will execute `/usr/bin/mysql` within the container.
+- `mysql` - will execute `/usr/bin/mysql` within the container.
+- `mysql_config_editor` - will execute `/usr/bin/mysql_config_editor` within the container.
+- `mysql_secure_installation` - will execute `/usr/bin/mysql_secure_installation` within the container.
+- `mysql_ssl_rsa_setup` - will execute `/usr/bin/mysql_ssl_rsa_setup` within the container.
+- `mysql_tzinfo_to_sql` - will execute `/usr/bin/mysql_tzinfo_to_sql` within the container.
+- `mysql_upgrade` - will execute `/usr/bin/mysql_upgrade` within the container.
+- `mysqladmin` - will execute `/usr/bin/mysqladmin` within the container.
+- `mysqlbinlog` - will execute `/usr/bin/mysqlbinlog` within the container.
+- `mysqlcheck` - will execute `/usr/bin/mysqlcheck` within the container.
+- `mysqld_multi` - will execute `/usr/bin/mysqld_multi` within the container.
+- `mysqld_safe` - will execute `/usr/bin/mysqld_safe` within the container.
+- `mysqldump` - will execute `/usr/bin/mysqldump` within the container.
+- `mysqldumpslow` - will execute `/usr/bin/mysqldumpslow` within the container.
+- `mysqlimport` - will execute `/usr/bin/mysqlimport` within the container.
+- `mysqlpump` - will execute `/usr/bin/mysqlpump` within the container.
+- `mysqlshow` - will execute `/usr/bin/mysqlshow` within the container.
+- `mysqlslap` - will execute `/usr/bin/mysqlslap` within the container.
 
 
-Running alternate commands within the mysql Gearbox container.
-
-`./bin/mysql -gb-shell -- ls -l`
-
-`./bin/gb-launch -gb-name mysql -gb-version 5.5.62 -gb-shell -- ls -l`
-
-`./bin/mysql -gb-shell -- ps -eaf`
-
-`./bin/gb-launch -gb-name mysql -gb-version 5.5.62 -gb-shell -- ps -eaf`
-
-
+### Remote connection
 ssh - All [Gearbox](https://github.com/gearboxworks/) containers have a running SSH daemon. So you can connect remotely.
-To show what ports are exported to the host.
+To show what ports are exported to the host, use the following command.
 
-`./bin/gb-launch -gb-name mysql -gb-list`
+`./launch list mysql`
 
 
 ## Method 2: GitHub repo
@@ -165,7 +185,7 @@ shell - Run a shell, (/bin/bash), within a Docker container.
 ### SSH
 ssh - All [Gearbox](https://github.com/gearboxworks/) containers have a running SSH daemon. So you can connect remotely.
 
-Either use `gb-launch` above or discover the port and SSH directly.
+Either use `launch` above or discover the port and SSH directly.
 
 
 ```
