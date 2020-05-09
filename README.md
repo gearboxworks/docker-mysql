@@ -71,13 +71,13 @@ Create, and start the mysql Gearbox container. Run a shell.
 
 `./launch shell mysql`
 
-Create, and start the mysql Gearbox container with version 8.0.20 and run a shell.
+Create, and start the mysql Gearbox container with version 5.5.62 and run a shell.
 
-`./launch shell mysql:8.0.20`
+`./launch shell mysql:5.5.62`
 
-`./launch shell mysql:8.0.20 ls -l`
+`./launch shell mysql:5.5.62 ls -l`
 
-`./launch shell mysql:8.0.20 ps -eaf`
+`./launch shell mysql:5.5.62 ps -eaf`
 
 
 ### Available commands
@@ -90,7 +90,7 @@ Running mysql Gearbox container default command. If a container has a default in
 
 `./mysql -flag1 -flag2 variable`
 
-`./launch mysql:8.0.20 -flag1 -flag2 variable`
+`./launch mysql:5.5.62 -flag1 -flag2 variable`
 
 Gearbox containers may have multiple executables that can be run. The mysql Gearbox container has the following available commands:
 - The default command will execute `/usr/bin/mysql` within the container.
